@@ -63,25 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
         mStartDateCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-
-            }
-        });
-
-        mEndtDateCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-
-            }
-        });
-
-        mStartDateCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                mStartDateTxt = i + "-" + i1 + "-" + i2;
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int mounth, int day) {
+                mStartDateTxt = year + "-" + mounth + "-" + day;
                 mChooseStartDate.setText(getString(R.string.StartDate) + " " + mStartDateTxt);
                 GregorianCalendar gregorianCalendar = new GregorianCalendar();
-                gregorianCalendar.set(i, i1, i2);
+                gregorianCalendar.set(year, mounth, day);
                 mStartDate = gregorianCalendar.getTimeInMillis();
                 calendarView.setVisibility(View.GONE);
             }
@@ -89,11 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
         mEndtDateCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                mEndDateTxt = i + "-" + i1 + "-" + i2;
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int mounth, int day) {
+                mEndDateTxt = year + "-" + mounth + "-" + day;
                 mChooseEndDate.setText(getString(R.string.EndDate) + " " + mEndDateTxt);
                 GregorianCalendar gregorianCalendar = new GregorianCalendar();
-                gregorianCalendar.set(i, i1, i2);
+                gregorianCalendar.set(year, mounth, day);
                 mEndDate = gregorianCalendar.getTimeInMillis();
                 calendarView.setVisibility(View.GONE);
             }
